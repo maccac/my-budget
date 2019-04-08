@@ -1,6 +1,5 @@
 package org.github.maccac.mybudget.ledger
 
-import com.tyro.oss.randomdata.RandomBigDecimal.randomBigDecimal
 import com.tyro.oss.randomdata.RandomString.randomString
 import org.assertj.core.api.AssertionsForClassTypes.assertThat
 import org.github.maccac.mybudget.MyBudgetApplication

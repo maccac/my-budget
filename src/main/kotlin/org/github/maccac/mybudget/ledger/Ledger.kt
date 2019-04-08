@@ -13,7 +13,9 @@ data class Ledger(
         @Column(length = 256)
         val name: String,
         @NotNull
-        val currencyType: String = "AUD"
+        val currencyType: String = "AUD",
+        @OneToMany(fetch = FetchType.EAGER)
+        val labels: List<TransactionLabel> = emptyList()
 )
 
 @Entity
@@ -33,7 +35,7 @@ data class Transaction(
         @ManyToOne(fetch = FetchType.LAZY)
         val ledger: Ledger,
         @OneToMany(fetch = FetchType.EAGER)
-        val labels: List<TransactionLabel>
+        val labels: List<TransactionLabel> = emptyList()
 )
 
 @Entity
@@ -42,6 +44,4 @@ data class TransactionLabel(
         @Column(length = 16)
         val code: String,
         @Column(length = 256)
-        val name: String,
-        @ManyToOne(fetch = FetchType.LAZY)
-        val ledger: Ledger)
+        val name: String)

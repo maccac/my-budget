@@ -1,5 +1,6 @@
 package org.github.maccac.mybudget.ledger
 
+import com.tyro.oss.randomdata.RandomBigDecimal.randomBigDecimal
 import com.tyro.oss.randomdata.RandomString.randomString
 import org.assertj.core.api.AssertionsForClassTypes.assertThat
 import org.github.maccac.mybudget.MyBudgetApplication
@@ -16,18 +17,18 @@ import org.springframework.transaction.annotation.Transactional
 @SpringBootTest(classes = [MyBudgetApplication::class])
 @ActiveProfiles(value = ["test"])
 @Transactional
-class LedgerRepositoryTests {
+class TransactionRepositoryTests {
 
     @Autowired
-    private lateinit var ledgerRepository: LedgerRepository
+    private lateinit var labelRepository: LabelRepository
 
     @Test
-    internal fun `should save a ledger`() {
-        val ledger = Ledger(name = randomString(255))
+    internal fun `should save a transaction label`() {
+        val label = TransactionLabel(code = randomString(16), name = randomString())
 
-        ledgerRepository.save(ledger)
+        labelRepository.save(label)
 
-        assertThat(ledgerRepository.findAll().size).isEqualTo(1)
+        assertThat(labelRepository.findAll().size).isEqualTo(1)
     }
 
 }

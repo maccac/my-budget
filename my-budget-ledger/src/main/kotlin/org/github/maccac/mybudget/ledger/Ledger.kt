@@ -8,14 +8,14 @@ import javax.validation.constraints.NotNull
 data class Ledger(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column (name = "id")
-        val id: Long = 0,
+        var id: Long = 0,
         @NotNull
         @Column(length = 256)
-        val name: String,
+        var name: String,
         @NotNull
-        val currencyType: String = "AUD",
+        var currencyType: String = "AUD",
         @OneToMany(fetch = FetchType.EAGER)
-        val labels: List<TransactionLabel> = emptyList()
+        var labels: List<TransactionLabel> = emptyList()
 )
 
 @Entity
